@@ -101,43 +101,55 @@ const Loading = ({ percent }: { percent: number }) => {
 export default Loading;
 
 export const setProgress = (setLoading: (value: number) => void) => {
-  let percent: number = 0;
+  let currentPercent = 0;
+  let targetPercent = 0;
+  let isDone = false;
+  let animId: number | null = null;
+  let activeInterval: ReturnType<typeof setInterval> | null = null;
 
-  let interval = setInterval(() => {
-    if (percent <= 50) {
-      let rand = Math.round(Math.random() * 5);
-      percent = percent + rand;
-      setLoading(percent);
-    } else {
-      clearInterval(interval);
-      interval = setInterval(() => {
-        percent = percent + Math.round(Math.random());
-        setLoading(percent);
-        if (percent > 91) {
-          clearInterval(interval);
-        }
-      }, 2000);
+  activeInterval = setInterval(() => {
+    if (!isDone && targetPercent < 80) {
+      targetPercent += Math.floor(Math.random() * 4) + 1;
+      if (targetPercent > 80) targetPercent = 80;
     }
-  }, 100);
+  }, 70);
+
+  const tick = () => {
+    if (currentPercent < targetPercent) {
+      currentPercent = Math.min(targetPercent, currentPercent + 1);
+      setLoading(currentPercent);
+    }
+    if (currentPercent < 100 || !isDone) {
+      animId = requestAnimationFrame(tick);
+    }
+  };
+  animId = requestAnimationFrame(tick);
 
   function clear() {
-    clearInterval(interval);
+    if (activeInterval) clearInterval(activeInterval);
+    if (animId) cancelAnimationFrame(animId);
+    isDone = true;
+    targetPercent = 100;
+    currentPercent = 100;
     setLoading(100);
   }
 
   function loaded() {
     return new Promise<number>((resolve) => {
-      clearInterval(interval);
-      interval = setInterval(() => {
-        if (percent < 100) {
-          percent++;
-          setLoading(percent);
+      if (activeInterval) clearInterval(activeInterval);
+      targetPercent = 100;
+      isDone = true;
+
+      const checkLoaded = () => {
+        if (currentPercent >= 100) {
+          if (animId) cancelAnimationFrame(animId);
+          resolve(100);
         } else {
-          resolve(percent);
-          clearInterval(interval);
+          requestAnimationFrame(checkLoaded);
         }
-      }, 2);
+      };
+      requestAnimationFrame(checkLoaded);
     });
   }
-  return { loaded, percent, clear };
+  return { loaded, percent: currentPercent, clear };
 };

@@ -27,6 +27,7 @@ const setCharacter = (
           blobUrl,
           async (gltf) => {
             character = gltf.scene;
+            await new Promise((r) => requestAnimationFrame(r));
             await renderer.compileAsync(character, camera, scene);
             character.traverse((child: any) => {
               if (child.isMesh) {

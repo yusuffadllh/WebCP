@@ -12,6 +12,7 @@ import {
 } from "./utils/mouseUtils";
 import setAnimations from "./utils/animationUtils";
 import { setProgress } from "../Loading";
+import { setAllTimeline } from "../utils/GsapScroll";
 
 const Scene = () => {
   const canvasDiv = useRef<HTMLDivElement | null>(null);
@@ -33,6 +34,9 @@ const Scene = () => {
       if (isMobile) {
         let progress = setProgress((value) => setLoading(value));
         progress.loaded();
+        setTimeout(() => {
+          setAllTimeline();
+        }, 100);
         return () => {
           isMounted = false;
         };

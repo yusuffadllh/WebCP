@@ -133,12 +133,13 @@ export function setCharTimeline(
 }
 
 export function setAllTimeline() {
+  const isMobile = window.innerWidth <= 1024;
   const careerTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".career-section",
-      start: "top 50%",
-      end: "bottom 30%",
-      scrub: 1.5,
+      start: isMobile ? "top 85%" : "top 50%",
+      end: isMobile ? "bottom 15%" : "bottom 30%",
+      scrub: isMobile ? 0.5 : 1.5,
       invalidateOnRefresh: true,
     },
   });
