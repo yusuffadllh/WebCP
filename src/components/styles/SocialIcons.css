@@ -48,23 +48,25 @@
   z-index: 99;
   display: flex;
   gap: 5px;
-  bottom: 20px;
+  bottom: 60px;
   right: 0;
   width: auto;
   text-wrap: nowrap;
-  letter-spacing: 2px;
+  letter-spacing: 4px;
   font-size: 14px;
   line-height: 15px;
   font-weight: 600;
   color: #a0a0a0;
   cursor: pointer;
   transition: 0.5s;
-  transform: none;
+  transform-origin: right bottom;
+  transform: rotate(-90deg);
 }
 .resume-button:hover {
   color: #fff;
 }
-div.resume-button span {
+div.resume-button span,
+a.resume-button span {
   color: #fff;
   font-size: 17px;
   margin-top: -1px;
@@ -95,8 +97,12 @@ div.resume-button span {
     line-height: 20px;
     letter-spacing: 4px;
     bottom: 25px;
+    right: 0;
+    transform: none;
+    transform-origin: center;
   }
-  div.resume-button span {
+  div.resume-button span,
+  a.resume-button span {
     font-size: 20px;
     margin-top: -1.5px;
   }
