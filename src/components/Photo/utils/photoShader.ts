@@ -75,13 +75,14 @@ void main() {
   float depth = texture2D(uDepth, uv).r;
   vDepth = depth;
 
-  // Normal permukaan dari gradien kedalaman, dipakai fragment untuk pencahayaan.
+  // Normal permukaan dari gradien kedalaman, dipakai fragment untuk pencahayaan rim.
   float dl = texture2D(uDepth, uv - vec2(uDepthTexel, 0.0)).r;
   float dr = texture2D(uDepth, uv + vec2(uDepthTexel, 0.0)).r;
   float dd = texture2D(uDepth, uv - vec2(0.0, uDepthTexel)).r;
   float du = texture2D(uDepth, uv + vec2(0.0, uDepthTexel)).r;
-  vRelief = normalize(vec3((dl - dr) * 3.0, (dd - du) * 3.0, 0.55));
+  vRelief = normalize(vec3((dl - dr) * 1.5, (dd - du) * 1.5, 0.85));
 
+  // Pergeseran Z dibuat sangat halus (subtle) agar siluet bertekstur tanpa merusak wajah.
   pos.z += (depth - 0.5) * uDepthScale * uHasDepth;
 
   // Koreksi aspek supaya "gelembung" tetap bulat di layar, bukan lonjong.
@@ -160,19 +161,17 @@ void main() {
   vec3 color = vec3(texR.r, texG.g, texB.b);
   float alpha = max(max(texR.a, texG.a), texB.a);
 
-  // --- Pencahayaan relief ----------------------------------------------------
-  // Lampu kunci mengikuti pointer: karena normal berasal dari peta kedalaman,
-  // hasilnya kepala & badan tersorot terpisah dari latar -> terbaca sebagai
-  // objek 3D, bukan foto yang dimiringkan.
+  // --- Pencahayaan & Rim Siluet ---------------------------------------------
+  // Warna foto dijaga tetap alami dan tidak belang/seram di wajah.
   if (uHasDepth > 0.5) {
-    vec3 lightDir = normalize(vec3(uPointer * vec2(0.9, 0.7), 1.25));
+    // Pencahayaan terarah halus yang tidak mengubah kontras muka
+    vec3 lightDir = normalize(vec3(uPointer * vec2(0.4, 0.3), 1.8));
     float diffuse = clamp(dot(vRelief, lightDir), 0.0, 1.0);
-    float ambient = 0.72 + vDepth * 0.16;
-    color *= ambient + diffuse * (0.24 + uHover * 0.22);
+    color *= 0.9 + diffuse * 0.12;
 
-    // Rim aksen di sisi yang menghadap menjauh dari lampu.
-    float relief = pow(1.0 - clamp(vRelief.z, 0.0, 1.0), 1.6);
-    color += uAccent * relief * (0.16 + uHover * 0.2);
+    // Rim aksen glowing halus di tepian siluet 3D saat diputar pointer
+    float relief = pow(1.0 - clamp(vRelief.z, 0.0, 1.0), 2.2);
+    color += uAccent * relief * (0.08 + uHover * 0.12);
   }
 
   // Rim aksen di puncak gelembung + tepi riak.

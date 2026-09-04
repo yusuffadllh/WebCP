@@ -175,7 +175,7 @@ export const createPhotoPlane = (
   const uniforms: PhotoUniforms = {
     uTexture: { value: colorTexture },
     uDepth: { value: depthTexture },
-    uDepthScale: { value: hasDepth ? (options.lowPower ? 0.34 : 0.46) : 0 },
+    uDepthScale: { value: hasDepth ? (options.lowPower ? 0.05 : 0.09) : 0 },
     uHasDepth: { value: hasDepth ? 1 : 0 },
     uDepthTexel: { value: 1 / Math.max(8, depthSide) },
     uPointer: { value: new THREE.Vector2(0, 0) },
