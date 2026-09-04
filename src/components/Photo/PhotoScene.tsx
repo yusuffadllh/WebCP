@@ -97,8 +97,10 @@ const PhotoScene = () => {
     const pointer = { x: 0, y: 0, hover: 0 };
     // Batas kemiringan foto (radian). Meniru rotasi kepala robot lama yang
     // dibatasi PI/6, tapi lebih halus karena yang berputar seluruh bidang foto.
-    const MAX_TILT_Y = Math.PI / 14;
-    const MAX_TILT_X = Math.PI / 20;
+    // Kalau relief kedalaman aktif, batasnya diperbesar: makin miring, makin
+    // terlihat kepala/badan benar-benar menonjol dari latar.
+    let maxTiltY = Math.PI / 14;
+    let maxTiltX = Math.PI / 20;
 
     /** Koordinat viewport -> koordinat lokal plane (-1..1). */
     const toLocal = (clientX: number, clientY: number) => {
@@ -156,8 +158,8 @@ const PhotoScene = () => {
         : 0;
 
       photo.tilt.rotation.y =
-        (pointer.x * MAX_TILT_Y + idle * MAX_TILT_Y) * tiltAmount;
-      photo.tilt.rotation.x = -pointer.y * MAX_TILT_X * tiltAmount;
+        (pointer.x * maxTiltY + idle * maxTiltY) * tiltAmount;
+      photo.tilt.rotation.x = -pointer.y * maxTiltX * tiltAmount;
 
       renderer.render(scene, camera);
     };
@@ -230,6 +232,11 @@ const PhotoScene = () => {
         photo.uniforms.uMotion.value = reducedMotion ? 0 : 1;
         photo.fit(container.width, container.height);
         scene.add(photo.root);
+
+        if (photo.hasDepth) {
+          maxTiltY = Math.PI / 8;
+          maxTiltX = Math.PI / 14;
+        }
 
         setPhotoTimeline({ root: photo.root, uniforms: photo.uniforms });
         setAllTimeline();

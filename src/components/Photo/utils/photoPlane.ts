@@ -4,6 +4,11 @@ import {
   vertexShader,
   type PhotoUniforms,
 } from "./photoShader";
+import {
+  buildPhotoDepth,
+  createFlatDepthTexture,
+  type PhotoDepthMaps,
+} from "./photoDepth";
 
 /**
  * Kandidat file foto hero, dicoba berurutan sampai ada yang berhasil.
@@ -29,6 +34,8 @@ export interface PhotoPlane {
   uniforms: PhotoUniforms;
   /** Aspek gambar (w/h) hasil load. */
   imageAspect: number;
+  /** true kalau relief 3D (chroma key + peta kedalaman) berhasil dibangun. */
+  hasDepth: boolean;
   /** Sesuaikan ukuran plane dengan ukuran container. */
   fit: (containerWidth: number, containerHeight: number) => void;
   /** Pindah antara layout bertumpuk (≤1024px) dan desktop. */
@@ -133,14 +140,44 @@ export const createPhotoPlane = (
   options: { stacked: boolean; lowPower: boolean; accent?: string }
 ): PhotoPlane => {
   const image = texture.image as { width?: number; height?: number } | undefined;
-  const imageAspect =
-    image?.width && image?.height ? image.width / image.height : 0.8;
 
-  const segments = options.lowPower ? 24 : 56;
+  // Coba bangun relief 3D dari fotonya sendiri (potong latar + peta kedalaman).
+  // Kalau gagal (misal tekstur placeholder canvas), plane tetap jalan rata.
+  let depthMaps: PhotoDepthMaps | null = null;
+  try {
+    const src = texture.image as HTMLImageElement | HTMLCanvasElement | undefined;
+    if (src && (src as HTMLImageElement).width) {
+      depthMaps = buildPhotoDepth(src);
+    }
+  } catch (error) {
+    console.warn("[hero] Gagal menghitung relief foto, dipakai mode rata.", error);
+    depthMaps = null;
+  }
+
+  const hasDepth = depthMaps !== null;
+  const fallbackDepth = hasDepth ? null : createFlatDepthTexture();
+  const colorTexture = depthMaps ? depthMaps.color : texture;
+  const depthTexture = depthMaps
+    ? depthMaps.depth
+    : (fallbackDepth as THREE.Texture);
+  const depthSide = depthMaps ? depthMaps.depth.image.width : 1;
+
+  // Aspek diambil dari hasil crop siluet supaya plane tidak menyisakan area
+  // transparan lebar di kiri/kanan.
+  const imageAspect =
+    depthMaps?.aspect ??
+    (image?.width && image?.height ? image.width / image.height : 0.8);
+
+  // Relief butuh tesselasi lebih padat daripada plane rata.
+  const segments = options.lowPower ? 96 : 168;
   const geometry = new THREE.PlaneGeometry(1, 1, segments, segments);
 
   const uniforms: PhotoUniforms = {
-    uTexture: { value: texture },
+    uTexture: { value: colorTexture },
+    uDepth: { value: depthTexture },
+    uDepthScale: { value: hasDepth ? (options.lowPower ? 0.34 : 0.46) : 0 },
+    uHasDepth: { value: hasDepth ? 1 : 0 },
+    uDepthTexel: { value: 1 / Math.max(8, depthSide) },
     uPointer: { value: new THREE.Vector2(0, 0) },
     uHover: { value: 0 },
     uTime: { value: 0 },
@@ -212,6 +249,7 @@ export const createPhotoPlane = (
     mesh,
     uniforms,
     imageAspect,
+    hasDepth,
     fit,
     setStacked: (next: boolean) => {
       if (next === stacked) return;
@@ -222,6 +260,8 @@ export const createPhotoPlane = (
       geometry.dispose();
       material.dispose();
       texture.dispose();
+      depthMaps?.dispose();
+      fallbackDepth?.dispose();
     },
   };
 };
