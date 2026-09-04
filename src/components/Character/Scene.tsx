@@ -16,16 +16,18 @@ import { setProgress } from "../Loading";
 const Scene = () => {
   const canvasDiv = useRef<HTMLDivElement | null>(null);
   const hoverDivRef = useRef<HTMLDivElement>(null);
-  const sceneRef = useRef(new THREE.Scene());
   const { setLoading } = useLoading();
 
-  const [character, setChar] = useState<THREE.Object3D | null>(null);
+  const [, setChar] = useState<THREE.Object3D | null>(null);
   useEffect(() => {
+    let isMounted = true;
     if (canvasDiv.current) {
+      canvasDiv.current.innerHTML = "";
+
       let rect = canvasDiv.current.getBoundingClientRect();
       let container = { width: rect.width, height: rect.height };
-      const aspect = container.width / container.height;
-      const scene = sceneRef.current;
+      const aspect = container.width / (container.height || 1);
+      const scene = new THREE.Scene();
 
       const isMobile = window.innerWidth < 768;
       const renderer = new THREE.WebGLRenderer({
@@ -48,6 +50,7 @@ const Scene = () => {
       let headBone: THREE.Object3D | null = null;
       let screenLight: any | null = null;
       let mixer: THREE.AnimationMixer;
+      let loadedChar: THREE.Object3D | null = null;
 
       const clock = new THREE.Clock();
 
@@ -55,32 +58,38 @@ const Scene = () => {
       let progress = setProgress((value) => setLoading(value));
       const { loadCharacter } = setCharacter(renderer, scene, camera);
 
+      const resizeListener = () => {
+        if (loadedChar) {
+          handleResize(renderer, camera, canvasDiv, loadedChar);
+        }
+      };
+
       loadCharacter().then((gltf) => {
+        if (!isMounted) return;
         if (gltf) {
           const animations = setAnimations(gltf);
           hoverDivRef.current && animations.hover(gltf, hoverDivRef.current);
           mixer = animations.mixer;
           let character = gltf.scene;
+          loadedChar = character;
           setChar(character);
           scene.add(character);
           headBone = character.getObjectByName("spine006") || null;
           screenLight = character.getObjectByName("screenlight") || null;
           progress.loaded().then(() => {
+            if (!isMounted) return;
             setTimeout(() => {
+              if (!isMounted) return;
               light.turnOnLights();
               animations.startIntro();
             }, 2500);
           });
-          window.addEventListener("resize", () =>
-            handleResize(renderer, camera, canvasDiv, character)
-          );
+          window.addEventListener("resize", resizeListener);
         } else {
-          // Tidak ada model tapi juga tidak ada error: tetap lepaskan loader.
           progress.clear();
         }
       }).catch((error) => {
-        // Kalau model 3D gagal dimuat (dekripsi gagal, WebGL mati, file rusak),
-        // loader HARUS tetap dilepas — kalau tidak, situs macet di layar loading.
+        if (!isMounted) return;
         console.error("Gagal memuat karakter 3D:", error);
         progress.clear();
       });
@@ -150,14 +159,13 @@ const Scene = () => {
       };
       animate();
       return () => {
+        isMounted = false;
         if (animationFrameId) cancelAnimationFrame(animationFrameId);
         observer.disconnect();
         clearTimeout(debounce);
         scene.clear();
         renderer.dispose();
-        window.removeEventListener("resize", () =>
-          handleResize(renderer, camera, canvasDiv, character!)
-        );
+        window.removeEventListener("resize", resizeListener);
         if (canvasDiv.current && renderer.domElement.parentNode === canvasDiv.current) {
           canvasDiv.current.removeChild(renderer.domElement);
         }
