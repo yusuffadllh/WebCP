@@ -13,7 +13,7 @@ export const config = {
     },
     about: {
         title: "About Me",
-        description: "Saya Yusuf Fadilah, mahasiswa S1 Teknik Komputer Institut Teknologi Sepuluh Nopember angkatan 2024. Ketertarikan saya di bidang IT membuat saya banyak membangun proyek sendiri: aplikasi Android dengan Kotlin & Jetpack Compose, aplikasi web full-stack dengan React, Express, dan MySQL, sampai automation dan AI agent berbasis Node.js. Saya antusias belajar teknologi baru, berkontribusi di bidang IT, dan memperluas relasi selama masa perkuliahan."
+        description: "Saya Yusuf Fadilah, mahasiswa Teknik Komputer ITS. Berpengalaman membangun aplikasi mobile (Kotlin), web full-stack (React/Node.js/MySQL), serta automation & AI agent."
     },
     experiences: [
         {
