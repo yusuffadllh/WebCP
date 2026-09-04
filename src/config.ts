@@ -43,19 +43,6 @@ export const config = {
             technologies: ["Security & Licensing", "Manajemen Risiko", "Perizinan & Birokrasi", "Leadership"]
         },
         {
-            position: "Staff Divisi Security & License",
-            company: "Multimedia and Game Event 11 (MAGE 11) ITS",
-            period: "Maret 2025 - November 2025",
-            location: "Surabaya, Jawa Timur",
-            description: "Bertugas dalam divisi pengamanan dan perizinan event MAGE 11, memastikan keselamatan peserta, ketertiban area pameran & kompetisi, serta legalitas izin kegiatan.",
-            responsibilities: [
-                "Mengelola akses dan keamanan area kompetisi & pameran",
-                "Menangani perizinan peralatan & perlengkapan pendukung event",
-                "Menjaga ketertiban pengunjung dan panitia selama event berlangsung"
-            ],
-            technologies: ["Manajemen Event", "Pengamanan Acara", "Koordinasi Tim", "Problem Solving"]
-        },
-        {
             position: "Staff Divisi Instructor & Companion (IC)",
             company: "OKKBK HIMATEKKOM ITS",
             period: "Agustus 2025",
@@ -67,6 +54,19 @@ export const config = {
                 "Memastikan disiplin dan partisipasi aktif peserta"
             ],
             technologies: ["Mentoring", "Public Speaking", "Interpersonal Skill", "Problem Solving"]
+        },
+        {
+            position: "Staff Divisi Security & License",
+            company: "Multimedia and Game Event 11 (MAGE 11) ITS",
+            period: "Maret 2025 - November 2025",
+            location: "Surabaya, Jawa Timur",
+            description: "Bertugas dalam divisi pengamanan dan perizinan event MAGE 11, memastikan keselamatan peserta, ketertiban area pameran & kompetisi, serta legalitas izin kegiatan.",
+            responsibilities: [
+                "Mengelola akses dan keamanan area kompetisi & pameran",
+                "Menangani perizinan peralatan & perlengkapan pendukung event",
+                "Menjaga ketertiban pengunjung dan panitia selama event berlangsung"
+            ],
+            technologies: ["Manajemen Event", "Pengamanan Acara", "Koordinasi Tim", "Problem Solving"]
         },
         {
             position: "S1 Teknik Komputer",
@@ -83,19 +83,6 @@ export const config = {
             technologies: ["C++", "Python", "Kotlin", "TypeScript", "React", "Node.js", "Git"]
         },
         {
-            position: "Koordinator / Staff Sie Perlengkapan",
-            company: "Pemilihan Raya HIMATRO Universitas Lampung",
-            period: "November 2024 - Desember 2024",
-            location: "Bandar Lampung, Indonesia",
-            description: "Bertanggung jawab atas koordinasi 15 anggota sie perlengkapan, mengelola pengadaan, logistik, akomodasi, serta kesiapan alat teknis untuk seluruh divisi panitia.",
-            responsibilities: [
-                "Mengkoordinir 15 anggota tim perlengkapan selama rangkaian acara Pemira",
-                "Memenuhi kebutuhan logistik dan perlengkapan teknis seluruh sie",
-                "Melakukan inventarisasi, pendataan, dan serah terima peralatan"
-            ],
-            technologies: ["Kepemimpinan", "Manajemen Logistik", "Koordinasi Tim", "Quick Decision Making"]
-        },
-        {
             position: "Staff Sie Hubungan Masyarakat (Humas)",
             company: "Musyawarah Besar HIMATRO Universitas Lampung",
             period: "Desember 2024",
@@ -107,6 +94,19 @@ export const config = {
                 "Menangani masukan dan respon dari peserta Mubes"
             ],
             technologies: ["Public Relations", "Komunikasi", "Negosiasi", "Customer Care"]
+        },
+        {
+            position: "Koordinator / Staff Sie Perlengkapan",
+            company: "Pemilihan Raya HIMATRO Universitas Lampung",
+            period: "November 2024 - Desember 2024",
+            location: "Bandar Lampung, Indonesia",
+            description: "Bertanggung jawab atas koordinasi 15 anggota sie perlengkapan, mengelola pengadaan, logistik, akomodasi, serta kesiapan alat teknis untuk seluruh divisi panitia.",
+            responsibilities: [
+                "Mengkoordinir 15 anggota tim perlengkapan selama rangkaian acara Pemira",
+                "Memenuhi kebutuhan logistik dan perlengkapan teknis seluruh sie",
+                "Melakukan inventarisasi, pendataan, dan serah terima peralatan"
+            ],
+            technologies: ["Kepemimpinan", "Manajemen Logistik", "Koordinasi Tim", "Quick Decision Making"]
         },
         {
             position: "Staff Sie Konsumsi",
