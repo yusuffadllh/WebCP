@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="CPChatRemind - WhatsApp Bot Automation">
+  <defs>
+    <linearGradient id="cpcr-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1a14" />
+      <stop offset="50%" stop-color="#0b080c" />
+      <stop offset="100%" stop-color="#161029" />
+    </linearGradient>
+    <radialGradient id="cpcr-glow" cx="0.5" cy="0.4" r="0.62">
+      <stop offset="0%" stop-color="#25d366" stop-opacity="0.24" />
+      <stop offset="100%" stop-color="#25d366" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="cpcr-line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c2a4ff" stop-opacity="0" />
+      <stop offset="50%" stop-color="#c2a4ff" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#c2a4ff" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#cpcr-bg)" />
+  <rect width="1200" height="675" fill="url(#cpcr-glow)" />
+
+  <!-- chat bubble -->
+  <g transform="translate(360 168)">
+    <rect x="0" y="0" width="220" height="128" rx="26" fill="#25d366" fill-opacity="0.16" stroke="#25d366" stroke-opacity="0.55" stroke-width="2" />
+    <path d="M34 128 L34 166 L74 128 Z" fill="#25d366" fill-opacity="0.16" stroke="#25d366" stroke-opacity="0.55" stroke-width="2" stroke-linejoin="round" />
+    <g fill="#25d366" fill-opacity="0.6">
+      <rect x="34" y="40" width="150" height="10" rx="5" />
+      <rect x="34" y="66" width="112" height="10" rx="5" />
+      <rect x="34" y="92" width="70" height="10" rx="5" />
+    </g>
+  </g>
+
+  <!-- arrow -->
+  <path d="M612 232 L700 232" stroke="#c2a4ff" stroke-opacity="0.6" stroke-width="4" stroke-linecap="round" />
+  <path d="M688 218 L706 232 L688 246" fill="none" stroke="#c2a4ff" stroke-opacity="0.6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- calendar -->
+  <g transform="translate(736 160)">
+    <rect x="0" y="14" width="150" height="144" rx="18" fill="#c2a4ff" fill-opacity="0.12" stroke="#c2a4ff" stroke-opacity="0.6" stroke-width="2" />
+    <rect x="0" y="14" width="150" height="34" rx="18" fill="#c2a4ff" fill-opacity="0.3" />
+    <rect x="34" y="0" width="8" height="30" rx="4" fill="#c2a4ff" fill-opacity="0.75" />
+    <rect x="108" y="0" width="8" height="30" rx="4" fill="#c2a4ff" fill-opacity="0.75" />
+    <g fill="#c2a4ff" fill-opacity="0.5">
+      <rect x="24" y="70" width="22" height="18" rx="4" />
+      <rect x="64" y="70" width="22" height="18" rx="4" />
+      <rect x="104" y="70" width="22" height="18" rx="4" />
+      <rect x="24" y="104" width="22" height="18" rx="4" />
+      <rect x="64" y="104" width="22" height="18" rx="4" fill-opacity="0.95" />
+      <rect x="104" y="104" width="22" height="18" rx="4" />
+    </g>
+  </g>
+
+  <text x="600" y="510" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="70" font-weight="600" fill="#ffffff" letter-spacing="1">CPChatRemind</text>
+  <rect x="440" y="542" width="320" height="2" fill="url(#cpcr-line)" />
+  <text x="600" y="586" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="24" letter-spacing="6" fill="#c2a4ff" fill-opacity="0.85">WHATSAPP BOT · CALDAV</text>
+  <text x="600" y="628" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="21" letter-spacing="3" fill="#ffffff" fill-opacity="0.4">Node.js · TypeScript · Gemini · Docker</text>
+</svg>

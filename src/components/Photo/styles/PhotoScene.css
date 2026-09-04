@@ -1,0 +1,86 @@
+/**
+ * Layout hero foto.
+ *
+ * File ini hanya menambah/menimpa hal-hal khusus canvas foto. Posisi dasar
+ * `.character-model` / `.character-rim` tetap datang dari `Landing.css` supaya
+ * timeline GSAP yang menarget selector itu tidak perlu diubah.
+ */
+
+.hero-photo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.hero-photo-canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  position: relative;
+  z-index: 2;
+  /* Canvas tidak menangkap event; pointer dibaca dari #landingDiv supaya
+     scroll sentuh di Android tidak pernah terhalang. */
+  pointer-events: none;
+  touch-action: pan-y;
+}
+
+/* Mobile: hero bertumpuk (foto di atas, teks di bawah) dan canvas ikut
+   mengalir — TIDAK position: fixed, supaya tidak bentrok dengan
+   `.container-main { position: static }` di index.css. */
+@media only screen and (max-width: 768px) {
+  .hero-photo .character-model {
+    display: block !important;
+    position: relative !important;
+    left: auto !important;
+    bottom: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 46svh !important;
+    min-height: 300px;
+    max-height: 460px !important;
+    margin: 0 auto 8px;
+    z-index: 1;
+    order: -1;
+    pointer-events: none;
+  }
+
+  .hero-photo .character-model::after,
+  .hero-photo .character-model::before {
+    display: none;
+  }
+
+  .hero-photo .character-rim {
+    width: 210px;
+    height: 210px;
+    filter: blur(45px);
+  }
+}
+
+/* Tablet 769–1024px: masih bertumpuk, tapi foto boleh lebih tinggi. */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .hero-photo .character-model {
+    display: block !important;
+    position: relative !important;
+    height: 56svh !important;
+    max-height: 620px !important;
+    transform: none !important;
+    left: auto !important;
+    bottom: auto !important;
+    margin: 0 auto;
+    order: -1;
+  }
+
+  .hero-photo .character-model::after,
+  .hero-photo .character-model::before {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo .character-rim {
+    animation: none !important;
+  }
+}
