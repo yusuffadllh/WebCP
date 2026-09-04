@@ -3,7 +3,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
 import Lenis from "lenis";
-import { config } from "../config";
 import "./styles/Navbar.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -78,14 +77,25 @@ const Navbar = () => {
     <>
       <div className="header">
         <a href="/#" className="navbar-title" data-cursor="disable">
-          YF
+          YUSUF FADILAH
         </a>
         <a
-          href={`mailto:${config.contact.email}`}
+          href="#contact"
           className="navbar-connect"
           data-cursor="disable"
+          onClick={(e) => {
+            if (window.innerWidth > 1024) {
+              e.preventDefault();
+              if (lenis) {
+                const target = document.querySelector("#contact") as HTMLElement;
+                if (target) {
+                  lenis.scrollTo(target, { offset: 0, duration: 1.5 });
+                }
+              }
+            }
+          }}
         >
-          {config.contact.email}
+          <HoverLinks text="LET'S TALK ✦" />
         </a>
         <ul>
           <li>
