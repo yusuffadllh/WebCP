@@ -11,27 +11,33 @@ export let lenis: Lenis | null = null;
 
 const Navbar = () => {
   useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+
     // Initialize Lenis smooth scroll
     lenis = new Lenis({
-      duration: 1.7,
+      duration: isMobile ? 1.0 : 1.5,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
-      smoothWheel: true,
-      wheelMultiplier: 1.7,
-      touchMultiplier: 2,
+      smoothWheel: !isMobile,
+      wheelMultiplier: 1.2,
+      touchMultiplier: 1.5,
       infinite: false,
     });
 
-    // Start paused
+    // Start paused until intro FX finishes
     lenis.stop();
 
-    // Handle smooth scroll animation frame
+    // Sync Lenis scroll with GSAP ScrollTrigger
+    lenis.on("scroll", ScrollTrigger.update);
+
+    // Handle smooth scroll animation frame with proper cancellation
+    let rafId: number;
     function raf(time: number) {
       lenis?.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     // Handle navigation links
     let links = document.querySelectorAll(".header ul a");
@@ -56,12 +62,16 @@ const Navbar = () => {
     });
 
     // Handle resize
-    window.addEventListener("resize", () => {
+    const handleResize = () => {
       lenis?.resize();
-    });
+    };
+    window.addEventListener("resize", handleResize);
 
     return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("resize", handleResize);
       lenis?.destroy();
+      lenis = null;
     };
   }, []);
   return (
