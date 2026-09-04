@@ -5,7 +5,6 @@ const About = () => {
   return (
     <div className="about-section" id="about">
       <div className="about-me">
-        <span className="about-badge">✦ GET TO KNOW ME</span>
         <h3 className="title">{config.about.title}</h3>
         <p className="para">
           {config.about.description}

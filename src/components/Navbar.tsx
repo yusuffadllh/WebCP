@@ -11,32 +11,32 @@ export let lenis: Lenis | null = null;
 const Navbar = () => {
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
-
-    // Initialize Lenis smooth scroll
-    lenis = new Lenis({
-      duration: isMobile ? 1.0 : 1.5,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: "vertical",
-      gestureOrientation: "vertical",
-      smoothWheel: !isMobile,
-      wheelMultiplier: 1.2,
-      touchMultiplier: 1.5,
-      infinite: false,
-    });
-
-    // Start paused until intro FX finishes
-    lenis.stop();
-
-    // Sync Lenis scroll with GSAP ScrollTrigger
-    lenis.on("scroll", ScrollTrigger.update);
-
-    // Handle smooth scroll animation frame with proper cancellation
     let rafId: number;
-    function raf(time: number) {
-      lenis?.raf(time);
+
+    if (!isMobile) {
+      // Initialize Lenis smooth scroll for desktop only
+      lenis = new Lenis({
+        duration: 1.5,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: "vertical",
+        gestureOrientation: "vertical",
+        smoothWheel: true,
+        wheelMultiplier: 1.2,
+        infinite: false,
+      });
+
+      // Start paused until intro FX finishes
+      lenis.stop();
+
+      // Sync Lenis scroll with GSAP ScrollTrigger
+      lenis.on("scroll", ScrollTrigger.update);
+
+      function raf(time: number) {
+        lenis?.raf(time);
+        rafId = requestAnimationFrame(raf);
+      }
       rafId = requestAnimationFrame(raf);
     }
-    rafId = requestAnimationFrame(raf);
 
     // Handle navigation links
     let links = document.querySelectorAll(".header ul a");
@@ -77,7 +77,8 @@ const Navbar = () => {
     <>
       <div className="header">
         <a href="/#" className="navbar-title" data-cursor="disable">
-          YUSUF FADILAH
+          <img src="/yf-logo.svg" alt="YF Logo" className="navbar-logo-img" />
+          <span>YUSUF FADILAH</span>
         </a>
         <a
           href="#contact"

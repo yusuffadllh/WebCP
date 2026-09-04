@@ -30,10 +30,18 @@ const Scene = () => {
       const scene = new THREE.Scene();
 
       const isMobile = window.innerWidth < 768;
+      if (isMobile) {
+        let progress = setProgress((value) => setLoading(value));
+        progress.loaded();
+        return () => {
+          isMounted = false;
+        };
+      }
+
       const renderer = new THREE.WebGLRenderer({
         alpha: true,
-        antialias: !isMobile && window.devicePixelRatio < 2,
-        powerPreference: isMobile ? "default" : "high-performance",
+        antialias: window.devicePixelRatio < 2,
+        powerPreference: "high-performance",
       });
       renderer.setSize(container.width, container.height);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.25 : 1.75));

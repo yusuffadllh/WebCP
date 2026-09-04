@@ -44,6 +44,15 @@
   font-weight: 700;
   font-size: 13px;
   letter-spacing: 0.2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.navbar-logo-img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  border-radius: 6px;
 }
 @media only screen and (min-width: 500px) {
   .header {
