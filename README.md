@@ -50,6 +50,7 @@ npm run lint     # eslint
 - `src/config.ts` — sumber tunggal untuk identitas, deskripsi, pengalaman/organisasi, daftar project, skill, dan link kontak.
 - `src/components/TechStackNew.tsx` — daftar ikon tech stack (piramida 12 → 9 → 6 → 4).
 - `public/images/projects/` — gambar/preview tiap project.
+- `public/images/profile.png` — **foto profil untuk hero 3D.** Belum ada file → otomatis dipakai placeholder gradien berisi inisial. Ekstensi `.png`, `.jpg`, `.jpeg`, `.webp` semuanya dikenali. Paling bagus: PNG hasil cutout (background transparan), sisi terpanjang ≥ 1200 px.
 - `src/components/styles/` — CSS per komponen; variabel warna global ada di `src/index.css`.
 
 ---
@@ -67,5 +68,5 @@ npm run lint     # eslint
 
 Distribusikan di bawah [MIT License](LICENSE).
 
-Template dasar: [codexahmar/3D-portfolio](https://github.com/codexahmar/3D-portfolio) — seluruh konten, data, dan aset pada repo ini sudah diganti menjadi milik Yusuf Fadilah.
+Template dasar: [codexahmar/3D-portfolio](https://github.com/codexahmar/3D-portfolio) — seluruh konten, data, dan aset pada repo ini sudah diganti menjadi milik Yusuf Fadilah, dan hero 3D-nya diganti dari model robot menjadi plane foto ber-shader.
 
