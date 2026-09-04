@@ -43,6 +43,20 @@ export const config = {
             technologies: ["Security & Licensing", "Manajemen Risiko", "Perizinan & Birokrasi", "Leadership"]
         },
         {
+            position: "S1 Teknik Komputer",
+            company: "Institut Teknologi Sepuluh Nopember (ITS)",
+            period: "2024 - Present",
+            location: "Surabaya, Indonesia",
+            description: "Menempuh pendidikan sarjana di Departemen Teknik Komputer ITS, memperdalam sistem komputer, jaringan, arsitektur perangkat lunak, serta aktif mengembangkan aplikasi web & mobile.",
+            responsibilities: [
+                "Mempelajari pemograman berorientasi objek, struktur data, dan algoritma",
+                "Mengerjakan praktikum berbasis C++, Python, dan sistem tertanam",
+                "Membangun berbagai proyek personal full-stack web & Android (Kotlin/React)",
+                "Aktif dalam kepengurusan himpunan dan kepanitiaan event kampus"
+            ],
+            technologies: ["C++", "Python", "Kotlin", "TypeScript", "React", "Node.js", "Git"]
+        },
+        {
             position: "Staff Divisi Instructor & Companion (IC)",
             company: "OKKBK HIMATEKKOM ITS",
             period: "Agustus 2025",
@@ -67,20 +81,6 @@ export const config = {
                 "Menjaga ketertiban pengunjung dan panitia selama event berlangsung"
             ],
             technologies: ["Manajemen Event", "Pengamanan Acara", "Koordinasi Tim", "Problem Solving"]
-        },
-        {
-            position: "S1 Teknik Komputer",
-            company: "Institut Teknologi Sepuluh Nopember (ITS)",
-            period: "2024 - Present",
-            location: "Surabaya, Indonesia",
-            description: "Menempuh pendidikan sarjana di Departemen Teknik Komputer ITS, memperdalam sistem komputer, jaringan, arsitektur perangkat lunak, serta aktif mengembangkan aplikasi web & mobile.",
-            responsibilities: [
-                "Mempelajari pemograman berorientasi objek, struktur data, dan algoritma",
-                "Mengerjakan praktikum berbasis C++, Python, dan sistem tertanam",
-                "Membangun berbagai proyek personal full-stack web & Android (Kotlin/React)",
-                "Aktif dalam kepengurusan himpunan dan kepanitiaan event kampus"
-            ],
-            technologies: ["C++", "Python", "Kotlin", "TypeScript", "React", "Node.js", "Git"]
         },
         {
             position: "Staff Sie Hubungan Masyarakat (Humas)",

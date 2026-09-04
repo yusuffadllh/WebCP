@@ -31,13 +31,17 @@ export const LoadingProvider = ({ children }: PropsWithChildren) => {
     setIsLoading(false);
   };
 
+  const updateLoading = (percent: number) => {
+    setLoading((prev) => Math.max(prev, percent));
+  };
+
   const value = {
     isLoading,
     setIsLoading: (state: boolean) => {
       if (!state) releasedRef.current = true;
       setIsLoading(state);
     },
-    setLoading,
+    setLoading: updateLoading,
   };
 
   useEffect(() => {
