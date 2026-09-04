@@ -17,60 +17,147 @@ export const config = {
     },
     experiences: [
         {
-            position: "S1 Teknik Komputer",
-            company: "Institut Teknologi Sepuluh Nopember",
-            period: "2024 - Present",
-            location: "Surabaya, Indonesia",
-            description: "Menempuh pendidikan sarjana di Departemen Teknik Komputer ITS, memperdalam dasar pemrograman, struktur data, algoritma, dan sistem komputer sambil membangun proyek pribadi di bidang mobile dan web development.",
+            position: "Staff Divisi Kewirausahaan",
+            company: "Himpunan Mahasiswa Teknik Komputer (HIMATEKKOM) ITS",
+            period: "Maret 2025 - Present",
+            location: "Surabaya, Jawa Timur",
+            description: "Menjadi Staff Divisi Kewirausahaan selama periode kepengurusan, bertugas mengkonsep ide usaha kreatif dan merancang strategi pemasaran untuk meningkatkan pendapatan dan dana mandiri himpunan.",
             responsibilities: [
-                "Mempelajari pemrograman lanjut, struktur data, dan algoritma",
-                "Mengerjakan tugas praktikum berbasis C++, Python, dan pengembangan aplikasi",
-                "Membangun proyek pribadi Android (Kotlin) dan web (React, Node.js) di luar perkuliahan",
-                "Aktif mengikuti kegiatan dan komunitas kampus di bidang teknologi"
+                "Mengembangkan ide usaha dan merchandise himpunan",
+                "Merancang strategi pemasaran & publikasi produk",
+                "Mengelola alur penjualan untuk pendanaan kegiatan organisasi"
             ],
-            technologies: ["C++", "Python", "Kotlin", "TypeScript", "Algoritma & Struktur Data", "Git"]
+            technologies: ["Kewirausahaan", "Pemasaran", "Manajemen Keuangan", "Kerja Sama Tim"]
         },
         {
-            position: "Koordinator Sie Perlengkapan",
+            position: "Staff Ahli Divisi Security & License",
+            company: "Multimedia and Game Event 12 (MAGE 12) ITS",
+            period: "Maret 2025 - Present",
+            location: "Surabaya, Jawa Timur",
+            description: "Memegang peran Staff Ahli dalam pengelolaan keamanan, ketertiban umum, perizinan venue & regulasi acara berskala nasional yang diselenggarakan HIMATEKKOM ITS.",
+            responsibilities: [
+                "Menyusun & mengawasi Standar Operasional Prosedur (SOP) keamanan acara",
+                "Mengurus perizinan birokrasi kampus dan tempat pelaksanaan event",
+                "Mengkoordinasi alur pengamanan seluruh rangkaian kegiatan MAGE 12"
+            ],
+            technologies: ["Security & Licensing", "Manajemen Risiko", "Perizinan & Birokrasi", "Leadership"]
+        },
+        {
+            position: "Staff Divisi Security & License",
+            company: "Multimedia and Game Event 11 (MAGE 11) ITS",
+            period: "Maret 2025 - November 2025",
+            location: "Surabaya, Jawa Timur",
+            description: "Bertugas dalam divisi pengamanan dan perizinan event MAGE 11, memastikan keselamatan peserta, ketertiban area pameran & kompetisi, serta legalitas izin kegiatan.",
+            responsibilities: [
+                "Mengelola akses dan keamanan area kompetisi & pameran",
+                "Menangani perizinan peralatan & perlengkapan pendukung event",
+                "Menjaga ketertiban pengunjung dan panitia selama event berlangsung"
+            ],
+            technologies: ["Manajemen Event", "Pengamanan Acara", "Koordinasi Tim", "Problem Solving"]
+        },
+        {
+            position: "Staff Divisi Instructor & Companion (IC)",
+            company: "OKKBK HIMATEKKOM ITS",
+            period: "Agustus 2025",
+            location: "Surabaya, Jawa Timur",
+            description: "Bertugas mendampingi mahasiswa baru Teknik Komputer ITS, membangun komunikasi intensif, memberikan arahan pengenalan kehidupan kampus, dan memastikan kelancaran kegiatan orientasi.",
+            responsibilities: [
+                "Mendampingi & mengarahkan peserta selama rangkaian OKKBK",
+                "Membangun komunikasi efektif dan menyalurkan informasi orientasi",
+                "Memastikan disiplin dan partisipasi aktif peserta"
+            ],
+            technologies: ["Mentoring", "Public Speaking", "Interpersonal Skill", "Problem Solving"]
+        },
+        {
+            position: "S1 Teknik Komputer",
+            company: "Institut Teknologi Sepuluh Nopember (ITS)",
+            period: "2024 - Present",
+            location: "Surabaya, Indonesia",
+            description: "Menempuh pendidikan sarjana di Departemen Teknik Komputer ITS, memperdalam sistem komputer, jaringan, arsitektur perangkat lunak, serta aktif mengembangkan aplikasi web & mobile.",
+            responsibilities: [
+                "Mempelajari pemograman berorientasi objek, struktur data, dan algoritma",
+                "Mengerjakan praktikum berbasis C++, Python, dan sistem tertanam",
+                "Membangun berbagai proyek personal full-stack web & Android (Kotlin/React)",
+                "Aktif dalam kepengurusan himpunan dan kepanitiaan event kampus"
+            ],
+            technologies: ["C++", "Python", "Kotlin", "TypeScript", "React", "Node.js", "Git"]
+        },
+        {
+            position: "Koordinator / Staff Sie Perlengkapan",
             company: "Pemilihan Raya HIMATRO Universitas Lampung",
             period: "November 2024 - Desember 2024",
             location: "Bandar Lampung, Indonesia",
-            description: "Memimpin Sie Perlengkapan dengan 15 anggota pada rangkaian acara Pemilihan Raya HIMATRO, bertanggung jawab atas seluruh akomodasi dan kebutuhan peralatan seluruh sie.",
+            description: "Bertanggung jawab atas koordinasi 15 anggota sie perlengkapan, mengelola pengadaan, logistik, akomodasi, serta kesiapan alat teknis untuk seluruh divisi panitia.",
             responsibilities: [
-                "Mengkoordinir 15 anggota sie perlengkapan selama rangkaian acara",
-                "Bertanggung jawab atas akomodasi, perlengkapan, dan kebutuhan peralatan",
-                "Memenuhi permintaan peralatan dari sie lain secara tepat waktu",
-                "Melakukan pendataan dan pengembalian perlengkapan acara"
+                "Mengkoordinir 15 anggota tim perlengkapan selama rangkaian acara Pemira",
+                "Memenuhi kebutuhan logistik dan perlengkapan teknis seluruh sie",
+                "Melakukan inventarisasi, pendataan, dan serah terima peralatan"
             ],
-            technologies: ["Kepemimpinan", "Koordinasi Tim", "Manajemen Acara", "Problem Solving"]
+            technologies: ["Kepemimpinan", "Manajemen Logistik", "Koordinasi Tim", "Quick Decision Making"]
         },
         {
-            position: "Anggota Himpunan Mahasiswa Teknik Elektro",
+            position: "Staff Sie Hubungan Masyarakat (Humas)",
+            company: "Musyawarah Besar HIMATRO Universitas Lampung",
+            period: "Desember 2024",
+            location: "Bandar Lampung, Indonesia",
+            description: "Menjadi tim Humas bersama 10 anggota selama 3 hari pelaksanaan Mubes. Menyampaikan informasi resmi internal/eksternal, menjalin komunikasi dengan vendor, serta menangani pertanyaan & keluhan.",
+            responsibilities: [
+                "Menyampaikan alur informasi acara ke pihak internal & eksternal",
+                "Menjalin koordinasi dengan vendor & pihak pendukung acara",
+                "Menangani masukan dan respon dari peserta Mubes"
+            ],
+            technologies: ["Public Relations", "Komunikasi", "Negosiasi", "Customer Care"]
+        },
+        {
+            position: "Staff Sie Konsumsi",
+            company: "HUT HIMATRO Universitas Lampung",
+            period: "Februari 2024",
+            location: "Bandar Lampung, Indonesia",
+            description: "Staff Sie Konsumsi bersama 15 anggota selama 4 hari acara. Bertanggung jawab atas survei katering sesuai alokasi anggaran, manajemen persediaan, dan distribusi tepat waktu.",
+            responsibilities: [
+                "Survei & negosiasi harga konsumsi sesuai budget panitia",
+                "Mengatur persediaan & distribusi konsumsi bagi ratusan peserta & undangan",
+                "Menjaga efisiensi anggaran konsumsi"
+            ],
+            technologies: ["Budgeting", "Vendor Management", "Logistik Acara"]
+        },
+        {
+            position: "Anggota Himpunan",
             company: "HIMATRO Universitas Lampung",
             period: "November 2023 - April 2024",
             location: "Bandar Lampung, Indonesia",
-            description: "Menjadi anggota HIMATRO selama satu periode kepengurusan, terlibat dalam kepanitiaan, program kerja, serta rapat dan diskusi internal himpunan.",
+            description: "Menjadi anggota aktif HIMATRO selama satu periode kepengurusan, berpartisipasi dalam rapat internal, kepanitiaan acara, dan eksekusi program kerja himpunan.",
             responsibilities: [
-                "Mengikuti kepanitiaan dan menjalankan program kerja himpunan",
-                "Berpartisipasi dalam rapat dan diskusi internal",
-                "Menjadi Staff Sie Humas Musyawarah Besar HIMATRO (Desember 2024)",
-                "Menjadi Staff Sie Konsumsi HUT HIMATRO (Februari 2024)"
+                "Menjalankan program kerja divisi & kepanitiaan himpunan",
+                "Berpartisipasi aktif dalam rapat evaluasi dan perancangan acara",
+                "Membangun jaringan dan kolaborasi antar anggota"
             ],
-            technologies: ["Kerja Sama Tim", "Komunikasi", "Public Relations", "Organisasi"]
+            technologies: ["Organisasi", "Kerja Sama Tim", "Komunikasi"]
         },
         {
             position: "Anggota UKM Badminton",
-            company: "Unit Kegiatan Mahasiswa",
+            company: "Universitas Lampung",
             period: "September 2023 - April 2024",
             location: "Bandar Lampung, Indonesia",
-            description: "Anggota UKM Badminton selama satu periode kepengurusan: mengikuti latihan rutin, bakti sosial UKM, perlombaan badminton, dan rapat internal.",
+            description: "Anggota UKM Badminton selama satu periode. Mengikuti latihan fisik & teknik rutin, kegiatan bakti sosial masyarakat, turnamen internal/eksternal, serta rapat kepengurusan.",
             responsibilities: [
-                "Mengikuti latihan rutin dan perlombaan badminton",
-                "Terlibat dalam kegiatan bakti sosial UKM",
-                "Menghadiri rapat internal kepengurusan",
-                "Membangun disiplin, konsistensi, dan kerja sama tim"
+                "Latihan rutin dan mewakili UKM dalam perlombaan",
+                "Terlibat langsung dalam aksi bakti sosial UKM",
+                "Menjaga disiplin, ketahanan fisik, dan kebersamaan tim"
             ],
-            technologies: ["Disiplin", "Kerja Sama Tim", "Konsistensi", "Manajemen Waktu"]
+            technologies: ["Disiplin", "Sportivitas", "Kerja Sama Tim", "Manajemen Waktu"]
+        },
+        {
+            position: "Siswa SMA (Jurusan IPA)",
+            company: "SMAS Al-Kautsar Bandar Lampung",
+            period: "2021 - 2023",
+            location: "Bandar Lampung, Indonesia",
+            description: "Menyelesaikan pendidikan sekolah menengah atas di SMAS Al-Kautsar jurusan IPA dengan fokus pada matematika, fisika, dan dasar-dasar logika sains.",
+            responsibilities: [
+                "Fokus pada mata pelajaran eksak (Matematika & IPA)",
+                "Aktif mengembangkan minat awal di bidang teknologi dan komputer"
+            ],
+            technologies: ["Matematika", "Fisika", "Logika Sains"]
         }
     ],
     projects: [
