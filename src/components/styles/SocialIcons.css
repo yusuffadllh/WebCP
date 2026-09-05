@@ -48,9 +48,8 @@
   z-index: 99;
   display: flex;
   gap: 5px;
-  bottom: 20px;
-  right: 50%;
-  transform: translateX(50%);
+  bottom: 80px;
+  right: -30px;
   width: auto;
   white-space: nowrap;
   letter-spacing: 3px;
@@ -60,6 +59,8 @@
   color: #a0a0a0;
   cursor: pointer;
   transition: 0.5s;
+  transform-origin: 100% 100%;
+  transform: rotate(-90deg) translateX(100%);
 }
 .resume-button:hover {
   color: #fff;
