@@ -108,11 +108,11 @@ export const setProgress = (setLoading: (value: number) => void) => {
   let activeInterval: ReturnType<typeof setInterval> | null = null;
 
   activeInterval = setInterval(() => {
-    if (!isDone && targetPercent < 80) {
-      targetPercent += Math.floor(Math.random() * 4) + 1;
-      if (targetPercent > 80) targetPercent = 80;
+    if (!isDone && targetPercent < 90) {
+      targetPercent += Math.floor(Math.random() * 5) + 2;
+      if (targetPercent > 90) targetPercent = 90;
     }
-  }, 70);
+  }, 50);
 
   const tick = () => {
     if (currentPercent < targetPercent) {
@@ -143,8 +143,10 @@ export const setProgress = (setLoading: (value: number) => void) => {
       const checkLoaded = () => {
         if (currentPercent >= 100) {
           if (animId) cancelAnimationFrame(animId);
+          setLoading(100);
           resolve(100);
         } else {
+          targetPercent = 100;
           requestAnimationFrame(checkLoaded);
         }
       };

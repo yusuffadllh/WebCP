@@ -50,7 +50,7 @@
 
 .what-box-in {
   flex-direction: column;
-  height: 600px;
+  height: auto;
   margin-left: 200px;
   position: relative;
   display: flex;
@@ -265,7 +265,7 @@
 }
 
 .what-border2 svg {
-  height: 600px;
+  height: 100%;
   top: 50%;
   transform: translateY(-50%);
   position: absolute;
