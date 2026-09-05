@@ -20,8 +20,14 @@ const Scene = () => {
   const { setLoading } = useLoading();
 
   const [, setChar] = useState<THREE.Object3D | null>(null);
+  const progressRef = useRef<ReturnType<typeof setProgress> | null>(null);
   useEffect(() => {
     let isMounted = true;
+    // Cancel instance progress sebelumnya (StrictMode double-mount)
+    if (progressRef.current) {
+      progressRef.current.clear();
+      progressRef.current = null;
+    }
     if (canvasDiv.current) {
       canvasDiv.current.innerHTML = "";
 
@@ -32,14 +38,18 @@ const Scene = () => {
 
       const isMobile = window.innerWidth < 768;
       if (isMobile) {
-        let progress = setProgress((value) => setLoading(value));
+        const progress = setProgress((value) => setLoading(value));
+        progressRef.current = progress;
         progress.loaded().then(() => {
+          if (!isMounted) return;
           setTimeout(() => {
             setAllTimeline();
           }, 100);
         });
         return () => {
           isMounted = false;
+          progress.clear();
+          progressRef.current = null;
         };
       }
 
@@ -68,7 +78,8 @@ const Scene = () => {
       const clock = new THREE.Clock();
 
       const light = setLighting(scene);
-      let progress = setProgress((value) => setLoading(value));
+      const progress = setProgress((value) => setLoading(value));
+      progressRef.current = progress;
       const { loadCharacter } = setCharacter(renderer, scene, camera);
 
       const resizeListener = () => {
@@ -173,6 +184,8 @@ const Scene = () => {
       animate();
       return () => {
         isMounted = false;
+        progress.clear();
+        progressRef.current = null;
         if (animationFrameId) cancelAnimationFrame(animationFrameId);
         observer.disconnect();
         clearTimeout(debounce);

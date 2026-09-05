@@ -30,7 +30,7 @@ export const LoadingProvider = ({ children }: PropsWithChildren) => {
   };
 
   const updateLoading = (percent: number) => {
-    setLoading((prev) => Math.max(prev, percent));
+    setLoading(percent);
   };
 
   const value = {
