@@ -109,10 +109,10 @@ export const setProgress = (setLoading: (value: number) => void) => {
 
   activeInterval = setInterval(() => {
     if (!isDone && targetPercent < 90) {
-      targetPercent += Math.floor(Math.random() * 5) + 2;
+      targetPercent += Math.floor(Math.random() * 6) + 3;
       if (targetPercent > 90) targetPercent = 90;
     }
-  }, 50);
+  }, 40);
 
   const tick = () => {
     if (currentPercent < targetPercent) {
@@ -137,20 +137,21 @@ export const setProgress = (setLoading: (value: number) => void) => {
   function loaded() {
     return new Promise<number>((resolve) => {
       if (activeInterval) clearInterval(activeInterval);
-      targetPercent = 100;
       isDone = true;
+      targetPercent = 100;
 
-      const checkLoaded = () => {
+      // Jalankan animasi cepat dari progres saat ini sampai menyentuh 100%
+      const fastTicker = () => {
+        currentPercent = Math.min(100, currentPercent + 3);
+        setLoading(currentPercent);
         if (currentPercent >= 100) {
           if (animId) cancelAnimationFrame(animId);
-          setLoading(100);
           resolve(100);
         } else {
-          targetPercent = 100;
-          requestAnimationFrame(checkLoaded);
+          requestAnimationFrame(fastTicker);
         }
       };
-      requestAnimationFrame(checkLoaded);
+      requestAnimationFrame(fastTicker);
     });
   }
   return { loaded, percent: currentPercent, clear };

@@ -20,15 +20,17 @@ const LOADER_TIMEOUT_MS = 12000;
 export const LoadingContext = createContext<LoadingType | null>(null);
 
 export const LoadingProvider = ({ children }: PropsWithChildren) => {
-  // Hero foto di-mount di semua viewport (termasuk Android), jadi progres selalu
-  // ada yang menggerakkan dan layar loading aman ditampilkan di mana saja.
-  const [isLoading, setIsLoading] = useState(true);
-  const [loading, setLoading] = useState(0);
-  const releasedRef = useRef(false);
+  // Cek apakah user bernavigasi antar halaman (misal kembali dari /myworks).
+  // Jika ini bukan kunjungan pertama/refresh, jangan jalankan loading screen lagi.
+  const isInitialVisit = useRef(!sessionStorage.getItem("hasVisitedHome"));
+  const [isLoading, setIsLoading] = useState(isInitialVisit.current);
+  const [loading, setLoading] = useState(isInitialVisit.current ? 0 : 100);
+  const releasedRef = useRef(!isInitialVisit.current);
 
   const releaseLoader = () => {
     releasedRef.current = true;
     setIsLoading(false);
+    sessionStorage.setItem("hasVisitedHome", "true");
   };
 
   const updateLoading = (percent: number) => {
@@ -38,8 +40,8 @@ export const LoadingProvider = ({ children }: PropsWithChildren) => {
   const value = {
     isLoading,
     setIsLoading: (state: boolean) => {
-      if (!state) releasedRef.current = true;
-      setIsLoading(state);
+      if (!state) releaseLoader();
+      else setIsLoading(state);
     },
     setLoading: updateLoading,
   };
