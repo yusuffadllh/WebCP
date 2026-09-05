@@ -50,7 +50,7 @@
 
 .what-box-in {
   flex-direction: column;
-  height: 500px;
+  height: 600px;
   margin-left: 200px;
   position: relative;
   display: flex;
@@ -58,28 +58,50 @@
 
 .what-content {
   width: 450px;
-  min-height: 160px;
-  height: 160px;
+  min-height: 110px;
+  height: 110px;
   transition: 0.5s;
   position: relative;
-  padding: 30px 40px;
+  padding: 20px 40px;
   box-sizing: border-box;
   overflow: hidden;
 }
 
 .what-noTouch:hover,
 .what-content-active {
-  min-height: 280px;
+  min-height: 270px;
   height: auto;
-  padding: 30px 40px;
+  padding: 24px 40px;
 }
 
 .what-noTouch:hover~.what-content,
 .what-box-in:hover .what-noTouch:not(:hover),
 .what-content.what-sibling {
-  min-height: 110px;
-  height: 110px;
-  padding: 20px 40px;
+  min-height: 85px;
+  height: 85px;
+  padding: 14px 40px;
+}
+
+.what-content p,
+.what-content h5,
+.what-content-flex {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.what-noTouch:hover p,
+.what-noTouch:hover h5,
+.what-noTouch:hover .what-content-flex,
+.what-content-active p,
+.what-content-active h5,
+.what-content-active .what-content-flex {
+  display: flex;
+  opacity: 1;
+}
+
+.what-content p {
+  display: block;
 }
 
 .what-content h3 {
@@ -243,7 +265,7 @@
 }
 
 .what-border2 svg {
-  height: 500px;
+  height: 600px;
   top: 50%;
   transform: translateY(-50%);
   position: absolute;

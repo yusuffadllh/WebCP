@@ -270,6 +270,14 @@ export const config = {
             details:
                 "Merancang bot otomatis dan AI Agent otonom mengintegrasikan LLM (Gemini/OpenAI) dengan CalDAV, Webhooks, & otomatisasi tugas.",
             tools: ["Gemini API", "AI Agents", "Baileys WA", "CalDAV", "Webhooks", "SSE", "Python"]
+        },
+
+        systemEmbedded: {
+            title: "SYSTEM & EMBEDDED",
+            description: "Sistem Komputer, C/C++, & Pemrograman Tingkat Rendah",
+            details:
+                "Mempelajari dan mempraktikkan arsitektur komputer, algoritma graf, pemrosesan sinyal/hardware dasar, serta C++ dan Python.",
+            tools: ["C++", "Python", "Data Structures", "Dijkstra Algorithm", "Tkinter", "Linux / Shell"]
         }
     }
 };
