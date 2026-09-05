@@ -262,6 +262,22 @@ export const config = {
             details:
                 "Mengembangkan aplikasi web responsif dan REST API yang scalable dengan React, Next.js, dan Express, serta membangun automation dan AI agent memakai Node.js, TypeScript, dan database relasional.",
             tools: ["React", "Next.js", "TypeScript", "Node.js", "Express", "MySQL", "Prisma", "Tailwind CSS", "Vite", "Docker"]
+        },
+
+        aiAutomation: {
+            title: "AI & AUTOMATION",
+            description: "AI Agent, WhatsApp Bot, & Automasi Alur Kerja",
+            details:
+                "Merancang bot otomatis dan AI Agent mandiri yang mengintegrasikan LLM (Gemini API/OpenAI) dengan layanan pihak ketiga, CalDAV/Webhooks, dan otomatisasi tugas berulang untuk efisiensi sistem.",
+            tools: ["Gemini API", "AI Agents", "Baileys (WA Bot)", "CalDAV / Radicale", "Webhooks", "SSE", "Python Scripts", "Cron / WorkManager"]
+        },
+
+        systemEmbedded: {
+            title: "SYSTEM & EMBEDDED",
+            description: "Sistem Komputer, C/C++, & Pemrograman Tingkat Rendah",
+            details:
+                "Mempelajari dan mempraktikkan arsitektur komputer, algoritma graf, pemrosesan sinyal/hardware dasar, serta pemrograman C++ dan Python untuk kebutuhan praktikum dan proyek sistem tertanam ITS.",
+            tools: ["C++", "Python", "Data Structures", "Dijkstra Algorithm", "Tkinter", "Linux / Shell", "Git", "Embedded Systems"]
         }
     }
 };
