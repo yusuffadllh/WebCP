@@ -49,7 +49,7 @@
   display: flex;
   gap: 5px;
   bottom: 80px;
-  right: -30px;
+  right: 0;
   width: auto;
   white-space: nowrap;
   letter-spacing: 3px;
