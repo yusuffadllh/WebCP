@@ -85,18 +85,17 @@ const Navbar = () => {
           className="navbar-connect"
           data-cursor="disable"
           onClick={(e) => {
-            if (window.innerWidth > 1024) {
-              e.preventDefault();
-              if (lenis) {
-                const target = document.querySelector("#contact") as HTMLElement;
-                if (target) {
-                  lenis.scrollTo(target, { offset: 0, duration: 1.5 });
-                }
-              }
+            e.preventDefault();
+            const target = document.querySelector("#contact") as HTMLElement;
+            if (!target) return;
+            if (lenis) {
+              lenis.scrollTo(target, { offset: 0, duration: 3.5, easing: (t: number) => 1 - Math.pow(1 - t, 4) });
+            } else {
+              target.scrollIntoView({ behavior: "smooth" });
             }
           }}
         >
-          <HoverLinks text="PORTFOLIO ✦" />
+          <HoverLinks text="LET'S TALK ✦" />
         </a>
         <ul>
           <li>
