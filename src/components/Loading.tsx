@@ -129,9 +129,7 @@ export const setProgress = (setLoading: (value: number) => void) => {
     if (activeInterval) clearInterval(activeInterval);
     if (animId) cancelAnimationFrame(animId);
     isDone = true;
-    targetPercent = 100;
-    currentPercent = 100;
-    setLoading(100);
+    // Jangan panggil setLoading(100) — ini hanya cancel, bukan selesai
   }
 
   function loaded() {

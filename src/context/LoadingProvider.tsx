@@ -23,6 +23,9 @@ export const LoadingProvider = ({ children }: PropsWithChildren) => {
   const [isLoading, setIsLoading] = useState(true);
   const [loading, setLoading] = useState(0);
   const releasedRef = useRef(false);
+  // Setiap kali provider mount ulang (StrictMode), naikkan generasi
+  // supaya update dari instance setProgress lama diabaikan
+  const generationRef = useRef(0);
 
   const releaseLoader = () => {
     releasedRef.current = true;
@@ -32,6 +35,14 @@ export const LoadingProvider = ({ children }: PropsWithChildren) => {
   const updateLoading = (percent: number) => {
     setLoading(percent);
   };
+
+  // Reset state saat mount (penting untuk StrictMode double-mount)
+  useEffect(() => {
+    generationRef.current += 1;
+    setLoading(0);
+    setIsLoading(true);
+    releasedRef.current = false;
+  }, []);
 
   const value = {
     isLoading,
