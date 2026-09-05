@@ -28,16 +28,15 @@ const Loading = ({ percent }: { percent: number }) => {
   }, [percent, loaded]);
 
   useEffect(() => {
+    if (!isLoaded) return;
+    setClicked(true);
     import("./utils/initialFX").then((module) => {
-      if (isLoaded) {
-        setClicked(true);
-        setTimeout(() => {
-          if (module.initialFX) {
-            module.initialFX();
-          }
-          setIsLoading(false);
-        }, 900);
-      }
+      setTimeout(() => {
+        if (module.initialFX) {
+          module.initialFX();
+        }
+        setIsLoading(false);
+      }, 900);
     });
   }, [isLoaded]);
 
