@@ -89,7 +89,7 @@ const Navbar = () => {
             const target = document.querySelector("#contact") as HTMLElement;
             if (!target) return;
             if (lenis) {
-              lenis.scrollTo(target, { offset: 0, duration: 3.5, easing: (t: number) => 1 - Math.pow(1 - t, 4) });
+              lenis.scrollTo(target, { offset: 0, duration: 5, easing: (t: number) => 1 - Math.pow(1 - t, 4) });
             } else {
               target.scrollIntoView({ behavior: "smooth" });
             }
