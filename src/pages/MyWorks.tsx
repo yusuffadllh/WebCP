@@ -9,7 +9,12 @@ const MyWorks = () => {
   return (
     <div className="myworks-page">
       <div className="myworks-header">
-        <Link to="/" className="back-button" data-cursor="disable">
+        <Link
+          to="/"
+          className="back-button"
+          data-cursor="disable"
+          onClick={() => sessionStorage.setItem("fromMyWorks", "true")}
+        >
           ← Back to Home
         </Link>
         <h1>
