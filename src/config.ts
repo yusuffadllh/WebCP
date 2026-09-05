@@ -274,10 +274,10 @@ export const config = {
 
         systemEmbedded: {
             title: "SYSTEM & EMBEDDED",
-            description: "Sistem Komputer, C/C++, & Pemrograman Tingkat Rendah",
+            description: "Sistem Komputer & Proyek Embedded Hardware/Software",
             details:
-                "Mempelajari dan mempraktikkan arsitektur komputer, algoritma graf, pemrosesan sinyal/hardware dasar, serta C++ dan Python.",
-            tools: ["C++", "Python", "Data Structures", "Dijkstra Algorithm", "Tkinter", "Linux / Shell"]
+                "Mengembangkan proyek embedded system dan perangkat keras/lunak terintegrasi, menerapkan arsitektur sistem komputer, komunikasi hardware, serta algoritma tingkat lanjut dengan C++ dan Python.",
+            tools: ["C++", "Python", "Embedded Systems", "Hardware/IoT", "Dijkstra Algorithm", "Linux / Shell"]
         }
     }
 };
