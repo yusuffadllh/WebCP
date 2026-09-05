@@ -20,18 +20,13 @@ const LOADER_TIMEOUT_MS = 12000;
 export const LoadingContext = createContext<LoadingType | null>(null);
 
 export const LoadingProvider = ({ children }: PropsWithChildren) => {
-  // Hanya lewati loading jika user kembali dari /myworks dalam sesi navigasi ini
-  const isBackFromMyWorks = useRef(sessionStorage.getItem("fromMyWorks") === "true");
-  
-  const [isLoading, setIsLoading] = useState(!isBackFromMyWorks.current);
-  const [loading, setLoading] = useState(isBackFromMyWorks.current ? 100 : 0);
-  const releasedRef = useRef(isBackFromMyWorks.current);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(0);
+  const releasedRef = useRef(false);
 
   const releaseLoader = () => {
     releasedRef.current = true;
     setIsLoading(false);
-    // Hapus flag setelah digunakan agar refresh/halaman baru tetap ada loading
-    sessionStorage.removeItem("fromMyWorks");
   };
 
   const updateLoading = (percent: number) => {
