@@ -245,7 +245,7 @@ export const config = {
         // Tidak punya akun X/Twitter -> dibiarkan kosong, ikonnya otomatis tidak dirender.
         twitter: "",
         instagram: "https://www.instagram.com/yusuf.fdlhh",
-        resume: "https://drive.google.com/file/d/11oQSjsjyadB9DFYLkPWEdybaG_gOBHtO/view?usp=sharing"
+        resume: "https://drive.google.com/file/d/1kgh1HJT8Z2kCoznWnFcz0njd-Oz6ypT8/view?usp=sharing"
     },
     skills: {
         develop: {
