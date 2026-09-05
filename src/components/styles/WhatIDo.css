@@ -58,27 +58,28 @@
 
 .what-content {
   width: 450px;
-  min-height: 180px;
-  height: auto;
+  min-height: 160px;
+  height: 160px;
   transition: 0.5s;
   position: relative;
-  padding: 50px;
+  padding: 30px 40px;
   box-sizing: border-box;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .what-noTouch:hover,
 .what-content-active {
-  min-height: auto;
+  min-height: 280px;
   height: auto;
-  padding: 40px 50px;
+  padding: 30px 40px;
 }
 
 .what-noTouch:hover~.what-content,
 .what-box-in:hover .what-noTouch:not(:hover),
 .what-content.what-sibling {
-  min-height: 33%;
-  padding: 10px 50px;
+  min-height: 110px;
+  height: 110px;
+  padding: 20px 40px;
 }
 
 .what-content h3 {
@@ -110,9 +111,8 @@
   animation: whatFlicker 0.5s 1 forwards;
   animation-delay: 1s;
 
-  height: auto;
-  max-height: 100%;
-  overflow: visible;
+  height: 100%;
+  overflow: hidden;
 }
 
 @keyframes whatFlicker {
