@@ -17,6 +17,20 @@ export const config = {
     },
     experiences: [
         {
+            position: "S1 Teknik Komputer",
+            company: "Institut Teknologi Sepuluh Nopember (ITS)",
+            period: "2024 - Present",
+            location: "Surabaya, Indonesia",
+            description: "Menempuh pendidikan sarjana di Departemen Teknik Komputer ITS, memperdalam sistem komputer, jaringan, arsitektur perangkat lunak, serta aktif mengembangkan aplikasi web & mobile.",
+            responsibilities: [
+                "Mempelajari pemograman berorientasi objek, struktur data, dan algoritma",
+                "Mengerjakan praktikum berbasis C++, Python, dan sistem tertanam",
+                "Membangun berbagai proyek personal full-stack web & Android (Kotlin/React)",
+                "Aktif dalam kepengurusan himpunan dan kepanitiaan event kampus"
+            ],
+            technologies: ["C++", "Python", "Kotlin", "TypeScript", "React", "Node.js", "Git"]
+        },
+        {
             position: "Staff Divisi Kewirausahaan",
             company: "Himpunan Mahasiswa Teknik Komputer (HIMATEKKOM) ITS",
             period: "Maret 2025 - Present",
@@ -41,20 +55,6 @@ export const config = {
                 "Mengkoordinasi alur pengamanan seluruh rangkaian kegiatan MAGE 12"
             ],
             technologies: ["Security & Licensing", "Manajemen Risiko", "Perizinan & Birokrasi", "Leadership"]
-        },
-        {
-            position: "S1 Teknik Komputer",
-            company: "Institut Teknologi Sepuluh Nopember (ITS)",
-            period: "2024 - Present",
-            location: "Surabaya, Indonesia",
-            description: "Menempuh pendidikan sarjana di Departemen Teknik Komputer ITS, memperdalam sistem komputer, jaringan, arsitektur perangkat lunak, serta aktif mengembangkan aplikasi web & mobile.",
-            responsibilities: [
-                "Mempelajari pemograman berorientasi objek, struktur data, dan algoritma",
-                "Mengerjakan praktikum berbasis C++, Python, dan sistem tertanam",
-                "Membangun berbagai proyek personal full-stack web & Android (Kotlin/React)",
-                "Aktif dalam kepengurusan himpunan dan kepanitiaan event kampus"
-            ],
-            technologies: ["C++", "Python", "Kotlin", "TypeScript", "React", "Node.js", "Git"]
         },
         {
             position: "Staff Divisi Instructor & Companion (IC)",
