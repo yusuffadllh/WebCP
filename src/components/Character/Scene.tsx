@@ -33,10 +33,11 @@ const Scene = () => {
       const isMobile = window.innerWidth < 768;
       if (isMobile) {
         let progress = setProgress((value) => setLoading(value));
-        progress.loaded();
-        setTimeout(() => {
-          setAllTimeline();
-        }, 100);
+        progress.loaded().then(() => {
+          setTimeout(() => {
+            setAllTimeline();
+          }, 100);
+        });
         return () => {
           isMounted = false;
         };

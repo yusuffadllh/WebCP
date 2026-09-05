@@ -115,11 +115,12 @@ export const setProgress = (setLoading: (value: number) => void) => {
   }, 40);
 
   const tick = () => {
+    if (isDone) return; // stop loop lama jika sudah selesai
     if (currentPercent < targetPercent) {
       currentPercent = Math.min(targetPercent, currentPercent + 1);
       setLoading(currentPercent);
     }
-    if (currentPercent < 100 || !isDone) {
+    if (currentPercent < 100) {
       animId = requestAnimationFrame(tick);
     }
   };
@@ -136,22 +137,23 @@ export const setProgress = (setLoading: (value: number) => void) => {
 
   function loaded() {
     return new Promise<number>((resolve) => {
+      // Hentikan semua loop lama terlebih dahulu
       if (activeInterval) clearInterval(activeInterval);
+      if (animId) cancelAnimationFrame(animId);
       isDone = true;
       targetPercent = 100;
 
-      // Jalankan animasi cepat dari progres saat ini sampai menyentuh 100%
+      // Jalankan animasi cepat dari progres saat ini sampai 100%
       const fastTicker = () => {
-        currentPercent = Math.min(100, currentPercent + 3);
+        currentPercent = Math.min(100, currentPercent + 2);
         setLoading(currentPercent);
         if (currentPercent >= 100) {
-          if (animId) cancelAnimationFrame(animId);
           resolve(100);
         } else {
-          requestAnimationFrame(fastTicker);
+          animId = requestAnimationFrame(fastTicker);
         }
       };
-      requestAnimationFrame(fastTicker);
+      animId = requestAnimationFrame(fastTicker);
     });
   }
   return { loaded, percent: currentPercent, clear };
