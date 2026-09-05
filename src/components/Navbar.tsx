@@ -96,7 +96,7 @@ const Navbar = () => {
             }
           }}
         >
-          <HoverLinks text="LET'S TALK ✦" />
+          <HoverLinks text="PORTFOLIO ✦" />
         </a>
         <ul>
           <li>
